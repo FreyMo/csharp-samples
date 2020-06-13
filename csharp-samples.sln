@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30204.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "async-enumerator", "async-enumerator\async-enumerator.csproj", "{2E8786C8-AF8C-4DEC-8A2E-003AFB214222}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "system-linq-async", "system-linq-async\system-linq-async.csproj", "{8683C6A4-783F-45D7-8DF6-E53FAE2FE917}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2E8786C8-AF8C-4DEC-8A2E-003AFB214222}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E8786C8-AF8C-4DEC-8A2E-003AFB214222}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E8786C8-AF8C-4DEC-8A2E-003AFB214222}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E8786C8-AF8C-4DEC-8A2E-003AFB214222}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8683C6A4-783F-45D7-8DF6-E53FAE2FE917}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8683C6A4-783F-45D7-8DF6-E53FAE2FE917}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8683C6A4-783F-45D7-8DF6-E53FAE2FE917}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8683C6A4-783F-45D7-8DF6-E53FAE2FE917}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2061BFBC-978C-454D-9BC8-CD92038783B7}
+	EndGlobalSection
+EndGlobal
