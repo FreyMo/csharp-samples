@@ -68,12 +68,5 @@ namespace system_linq_async
 
         // Cons:
         //      No ParallelAsync
-
-        // csharp-samples
-        //      System.Linq.Async
-        //      AsyncEnumerator
-        //      Reactive
-        //      Interactive
-        //      Polly
     }
 }
