@@ -8,7 +8,7 @@ namespace system_linq_async
     // Get a lot of work done the old fashioned way
     class MultipleTasksParallel
     {
-        static async Task DoAsync()
+        static void Do()
         {
             EnumerateMultiple().AsParallel()
                                .WithDegreeOfParallelism(4)
