@@ -1,0 +1,30 @@
+{
+   // Use IntelliSense to find out which attributes exist for C# debugging
+   // Use hover for the description of the existing attributes
+   // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
+   "version": "0.2.0",
+   "configurations": [
+    {
+        "name": "Launch AsyncEnumerator",
+        "type": "coreclr",
+        "request": "launch",
+        "preLaunchTask": "Build AsyncEnumerator",
+        "program": "${workspaceFolder}/async-enumerator/bin/Debug/netcoreapp3.1/async-enumerator.dll",
+        "args": [],
+        "cwd": "${workspaceFolder}/system-linq-async",
+        "console": "internalConsole",
+        "stopAtEntry": false
+    },
+    {
+        "name": "Launch System.Linq.Async",
+        "type": "coreclr",
+        "request": "launch",
+        "preLaunchTask": "Build System.Linq.Async",
+        "program": "${workspaceFolder}/system-linq-async/bin/Debug/netcoreapp3.1/system-linq-async.dll",
+        "args": [],
+        "cwd": "${workspaceFolder}/system-linq-async",
+        "console": "internalConsole",
+        "stopAtEntry": false
+    }
+    ]
+}
