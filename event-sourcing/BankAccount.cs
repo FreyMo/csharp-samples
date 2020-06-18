@@ -16,16 +16,16 @@ namespace event_sourcing
         // Note that a ConcurrentQueue is not the best list type as it is not read only and items can be dequeued.
         public ConcurrentQueue<ITransaction> Transactions { get; } = new ConcurrentQueue<ITransaction>();
 
-        public IEnumerable<HistoryItem> GetHistory()
+        public IEnumerable<BalanceItem> GetHistory()
         {
             var balanceBefore = GetBalances().First();
 
             foreach (var balance in GetBalances().Skip(1))
             {
-                yield return new HistoryItem
+                yield return new BalanceItem
                 {
-                    BalanceBefore = balanceBefore,
-                    BalanceAfter = balance
+                    Before = balanceBefore,
+                    After = balance
                 };
 
                 balanceBefore = balance;

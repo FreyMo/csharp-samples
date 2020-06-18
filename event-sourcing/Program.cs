@@ -16,10 +16,10 @@ namespace event_sourcing
 
             Console.WriteLine("Last 5 transactions:");
 
-            foreach (var historyItem in account.GetHistory().TakeLast(5))
+            foreach (var balance in account.GetHistory().TakeLast(5))
             {
-                Console.WriteLine($"Before: {historyItem.BalanceBefore}");
-                Console.WriteLine($"After: {historyItem.BalanceAfter}");
+                Console.WriteLine($"Before: {balance.Before}");
+                Console.WriteLine($"After: {balance.After}");
                 Console.WriteLine();
             }
             
