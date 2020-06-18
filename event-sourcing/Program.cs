@@ -10,12 +10,12 @@ namespace event_sourcing
 
             for (var i = 0; i < 10; i++)
             {
-                account.Transactions.Enqueue(new IncomingPayment(5));
+                account.Transactions.Enqueue(new IncomingPayment(5.13m));
             }
 
             for (var i = 0; i < 15; i++)
             {
-                account.Transactions.Enqueue(new OutgoingPayment(3));
+                account.Transactions.Enqueue(new OutgoingPayment(3.3333m));
             }
 
             Console.WriteLine("History:");

@@ -11,9 +11,6 @@ namespace event_sourcing
             _amount = amount >= 0 ? amount : throw new ArgumentOutOfRangeException();
         }
 
-        public decimal Modify(decimal balance)
-        {
-            return balance + _amount;
-        }
+        public decimal Modify(decimal balance) => balance + _amount;
     }
 }
