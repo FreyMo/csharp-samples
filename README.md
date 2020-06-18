@@ -9,6 +9,10 @@ This repo contains usage samples for the following NuGet Packages:
   * [NuGet](https://www.nuget.org/packages/AsyncEnumerator/)
   * [Local](./async-enumerator)
 
+There are also practical applications for patterns:
+
+* [Event Sourcing](./event-sourcing)
+
 ## TODO
 
 * Polly
