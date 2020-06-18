@@ -4,6 +4,17 @@
    // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
    "version": "0.2.0",
    "configurations": [
+       {
+           "name": "Launch System.Reactive",
+           "type": "coreclr",
+           "request": "launch",
+           "preLaunchTask": "Build System.Reactive",
+           "program": "${workspaceFolder}/system-reactive/bin/Debug/netcoreapp3.1/system-reactive.dll",
+           "args": [],
+           "cwd": "${workspaceFolder}",
+           "stopAtEntry": false,
+           "console": "internalConsole"
+       },
     {
         "name": "Launch AsyncEnumerator",
         "type": "coreclr",
@@ -21,6 +32,17 @@
         "request": "launch",
         "preLaunchTask": "Build System.Linq.Async",
         "program": "${workspaceFolder}/system-linq-async/bin/Debug/netcoreapp3.1/system-linq-async.dll",
+        "args": [],
+        "cwd": "${workspaceFolder}/system-linq-async",
+        "console": "internalConsole",
+        "stopAtEntry": false
+    },
+    {
+        "name": "Launch Event Sourcing",
+        "type": "coreclr",
+        "request": "launch",
+        "preLaunchTask": "Build Event Sourcing",
+        "program": "${workspaceFolder}/event-sourcing/bin/Debug/netcoreapp3.1/event-sourcing.dll",
         "args": [],
         "cwd": "${workspaceFolder}/system-linq-async",
         "console": "internalConsole",
