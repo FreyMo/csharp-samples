@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace event_sourcing
 {
@@ -6,29 +7,25 @@ namespace event_sourcing
     {
         public static void Main(string[] args)
         {
-            var account = new BankAccount(0);
+            var account = new BankAccount(-25m);
 
-            for (var i = 0; i < 10; i++)
+            for (var i = 0; i < 100; i++)
             {
-                account.Transactions.Enqueue(new IncomingPayment(5.13m));
+                account.Transactions.Enqueue(Randomizer.GetRandomTransaction());
             }
 
-            for (var i = 0; i < 15; i++)
-            {
-                account.Transactions.Enqueue(new OutgoingPayment(3.3333m));
-            }
+            Console.WriteLine("Last 5 transactions:");
 
-            Console.WriteLine("History:");
-
-            foreach (var historyItem in account.GetHistory())
+            foreach (var historyItem in account.GetHistory().TakeLast(5))
             {
                 Console.WriteLine($"Before: {historyItem.BalanceBefore}");
                 Console.WriteLine($"After: {historyItem.BalanceAfter}");
                 Console.WriteLine();
             }
             
-            Console.WriteLine($"Current balance: {account.GetCurrentBalance()}");
-            Console.WriteLine($"Maximum balance: {account.GetMaxBalance()}");
+            Console.WriteLine($"Current balance: {account.GetBalances().Last()}");
+            Console.WriteLine($"Maximum balance: {account.GetBalances().Max()}");
+            Console.WriteLine($"Minimum balance: {account.GetBalances().Min()}");
         }
     }
 }

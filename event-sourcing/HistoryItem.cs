@@ -1,6 +1,6 @@
 namespace event_sourcing
 {
-    public class HistoryItem
+    public struct HistoryItem
     {
         public decimal BalanceBefore { get; set; }
 

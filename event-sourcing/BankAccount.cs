@@ -6,55 +6,43 @@ namespace event_sourcing
 {
     public class BankAccount
     {
-        private readonly decimal _startingBalance;
+        private readonly decimal _startingBalance = -25;
 
         public BankAccount(decimal startingBalance)
         {
             _startingBalance = startingBalance;
         }
         
+        // Note that a ConcurrentQueue is not the best list type as it is not read only and items can be dequeued.
         public ConcurrentQueue<ITransaction> Transactions { get; } = new ConcurrentQueue<ITransaction>();
 
-        public decimal GetCurrentBalance()
-        {
-            return Transactions.AsParallel()
-                               .Aggregate(_startingBalance, (balance, transaction) => transaction.Modify(balance));
-        }
-
-        public decimal GetMaxBalance()
-        {
-            var maxBalance = _startingBalance;
-
-            Transactions.Aggregate(_startingBalance, (balance, transaction) => 
-            {
-                var transformed = transaction.Modify(balance);
-
-                if (transformed > maxBalance)
-                {
-                    maxBalance = transformed;
-                }
-
-                return transformed;
-            });
-
-            return maxBalance;
-        }
-        
         public IEnumerable<HistoryItem> GetHistory()
         {
+            var balanceBefore = GetBalances().First();
+
+            foreach (var balance in GetBalances().Skip(1))
+            {
+                yield return new HistoryItem
+                {
+                    BalanceBefore = balanceBefore,
+                    BalanceAfter = balance
+                };
+
+                balanceBefore = balance;
+            }
+        }
+
+        public IEnumerable<decimal> GetBalances()
+        {
+            yield return _startingBalance;
+
             var currentBalance = _startingBalance;
 
             foreach (var transaction in Transactions)
             {
-                var balanceBefore = currentBalance;
-
                 currentBalance = transaction.Modify(currentBalance);
 
-                yield return new HistoryItem
-                {
-                    BalanceBefore = balanceBefore,
-                    BalanceAfter = currentBalance
-                };
+                yield return currentBalance;
             }
         }
     }
