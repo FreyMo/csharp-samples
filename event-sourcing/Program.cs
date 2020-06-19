@@ -7,11 +7,11 @@ namespace event_sourcing
     {
         public static void Main(string[] args)
         {
-            var account = new BankAccount(-25m);
+            var account = new BankAccount(startingBalance: -25.0m);
 
             for (var i = 0; i < 100; i++)
             {
-                account.Transactions.Enqueue(Randomizer.GetRandomTransaction());
+                account.AddTransaction(Randomizer.CreateTransaction());
             }
 
             Console.WriteLine("Last 5 transactions:");

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,15 +7,18 @@ namespace event_sourcing
 {
     public class BankAccount
     {
-        private readonly decimal _startingBalance = -25;
+        private readonly decimal _startingBalance;
+        private readonly ConcurrentQueue<ITransaction> _transactions = new ConcurrentQueue<ITransaction>();
 
         public BankAccount(decimal startingBalance)
         {
             _startingBalance = startingBalance;
         }
         
-        // Note that a ConcurrentQueue is not the best list type as it is not read only and items can be dequeued.
-        public ConcurrentQueue<ITransaction> Transactions { get; } = new ConcurrentQueue<ITransaction>();
+        public void AddTransaction(ITransaction transaction)
+        {
+            _transactions.Enqueue(transaction ?? throw new ArgumentNullException());
+        }
 
         public IEnumerable<BalanceItem> GetHistory()
         {
@@ -38,7 +42,7 @@ namespace event_sourcing
 
             var currentBalance = _startingBalance;
 
-            foreach (var transaction in Transactions)
+            foreach (var transaction in _transactions)
             {
                 currentBalance = transaction.Modify(currentBalance);
 

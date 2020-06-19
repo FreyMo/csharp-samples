@@ -6,7 +6,7 @@ namespace event_sourcing
     {
         private static readonly Random _random = new Random();
 
-        public static ITransaction GetRandomTransaction()
+        public static ITransaction CreateTransaction()
         {
             var amount = (decimal)_random.NextDouble() * 50 - 25;
 
