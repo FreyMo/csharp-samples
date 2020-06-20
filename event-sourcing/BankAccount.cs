@@ -2,6 +2,8 @@ using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reactive.Linq;
+using System.Reactive.Subjects;
 
 namespace event_sourcing
 {
@@ -9,16 +11,23 @@ namespace event_sourcing
     {
         private readonly decimal _startingBalance;
         private readonly ConcurrentQueue<ITransaction> _transactions = new ConcurrentQueue<ITransaction>();
+        private readonly BehaviorSubject<decimal> _currentBalance;
 
         public BankAccount(decimal startingBalance)
         {
             _startingBalance = startingBalance;
+
+            _currentBalance = new BehaviorSubject<decimal>(_startingBalance);
         }
         
         public void AddTransaction(ITransaction transaction)
         {
             _transactions.Enqueue(transaction ?? throw new ArgumentNullException());
+
+            _currentBalance.OnNext(GetBalances().Last());
         }
+
+        public IObservable<decimal> GetCurrentBalance() => _currentBalance.AsObservable();
 
         public IEnumerable<BalanceItem> GetHistory()
         {
