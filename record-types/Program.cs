@@ -12,24 +12,20 @@ namespace record_types
                 MyString = ""
             };
 
-            var anotherRecord = rec with { MyInt = 4 };
-            // rec.MyInt = 4;
+            var rec2 = rec with { };
+            var rec3 = rec with { MyInt = 4 };
+            // rec.MyInt = 4; Won't compile!
 
             Console.WriteLine(rec.MyInt);
-            Console.WriteLine(anotherRecord.MyInt);
-            Console.WriteLine(anotherRecord == rec);
+            Console.WriteLine(rec2.MyInt);
+            Console.WriteLine(rec3.MyInt);
+            Console.WriteLine(rec2 == rec);
+            Console.WriteLine(rec3 == rec);
+
+            var (myInt, myString) = rec;
+
+            Console.WriteLine(myInt);
+            Console.WriteLine(myString);
         }
-    }
-
-
-
-
-
-
-
-    public record MyRecord
-    {
-        public int MyInt { get; init; }
-        public string MyString { get; init; }
     }
 }

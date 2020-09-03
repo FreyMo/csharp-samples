@@ -22,7 +22,7 @@
         "preLaunchTask": "Build AsyncEnumerator",
         "program": "${workspaceFolder}/async-enumerator/bin/Debug/netcoreapp3.1/async-enumerator.dll",
         "args": [],
-        "cwd": "${workspaceFolder}/system-linq-async",
+        "cwd": "${workspaceFolder}/async-enumerator",
         "console": "internalConsole",
         "stopAtEntry": false
     },
@@ -44,7 +44,18 @@
         "preLaunchTask": "Build Event Sourcing",
         "program": "${workspaceFolder}/event-sourcing/bin/Debug/netcoreapp3.1/event-sourcing.dll",
         "args": [],
-        "cwd": "${workspaceFolder}/system-linq-async",
+        "cwd": "${workspaceFolder}/event-sourcing",
+        "console": "internalConsole",
+        "stopAtEntry": false
+    },
+    {
+        "name": "Launch Record Types",
+        "type": "coreclr",
+        "request": "launch",
+        "preLaunchTask": "Build Record Types",
+        "program": "${workspaceFolder}/record-types/bin/Debug/net5.0/record-types.dll",
+        "args": [],
+        "cwd": "${workspaceFolder}/record-types",
         "console": "internalConsole",
         "stopAtEntry": false
     }

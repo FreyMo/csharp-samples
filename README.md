@@ -13,7 +13,13 @@ There are also practical applications for patterns:
 
 * [Event Sourcing](./event-sourcing)
 
+Or new .NET 5/C# 9 Features:
+
+* [Record Types](./record-types)
+
 ## TODO
+
+* `Span<T>`, `Memory<T>`
 
 * Polly
 * Reactive

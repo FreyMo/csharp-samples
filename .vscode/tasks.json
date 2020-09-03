@@ -49,5 +49,17 @@
             ],
             "problemMatcher": "$msCompile"
         },
+        {
+            "label": "Build Record Types",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/record-types/record-types.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile"
+        }
     ]
 }
