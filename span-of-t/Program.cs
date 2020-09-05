@@ -1,23 +1,13 @@
-﻿using System;
-
-namespace span_of_t
+﻿namespace span_of_t
 {
     class Program
     {
         static void Main(string[] args)
         {
-            SliceIt("");
+            Slicing.Run();
+            MemoryAndOwnership.Run();
+            StackAndHeap.Run();
+            RefStructs.Run();
         }
-    }
-
-    public static void DoStuff()
-    {
-
-    }
-
-    public ReadOnlySpan<char> SliceIt(ReadOnlySpan<char> span)
-    {
-        var temp = span.Overlaps("");
-
     }
 }

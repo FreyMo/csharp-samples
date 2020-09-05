@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "event-sourcing", "event-sou
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "record-types", "record-types\record-types.csproj", "{CDD7DB18-DC45-417C-A942-0CEF6C76ADCC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "span-of-t", "span-of-t\span-of-t.csproj", "{921DD7CF-B5B9-46A0-A80E-05872C13794B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{CDD7DB18-DC45-417C-A942-0CEF6C76ADCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CDD7DB18-DC45-417C-A942-0CEF6C76ADCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CDD7DB18-DC45-417C-A942-0CEF6C76ADCC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{921DD7CF-B5B9-46A0-A80E-05872C13794B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{921DD7CF-B5B9-46A0-A80E-05872C13794B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{921DD7CF-B5B9-46A0-A80E-05872C13794B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{921DD7CF-B5B9-46A0-A80E-05872C13794B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
