@@ -5,7 +5,7 @@ namespace span_of_t
 {
     // Naive sample implementation of Span<T> to understand how it works.
     // https://www.youtube.com/watch?v=8d0PlpQm10w&ab_channel=RainerStropek
-    public ref struct MySpan<T>
+    public readonly ref struct MySpan<T>
     {
         private readonly T[] _array;
         private readonly int _start;
