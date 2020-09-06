@@ -6,6 +6,7 @@ namespace span_of_t
     {
         public static void Run()
         {
+            Console.WriteLine("This demonstrates the difference between allocating memory on the stack and on the heap.");
             Console.WriteLine("Enter an array size:");
 
             // Argument checking omitted for brevity

@@ -6,6 +6,7 @@
         {
             Slicing.Run();
             MemoryAndOwnership.Run();
+            UnmanagedHeap.Run();
             StackAndHeap.Run();
             RefStructs.Run();
             UsageOfMySpan.Run();

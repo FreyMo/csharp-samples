@@ -7,6 +7,8 @@ namespace span_of_t
     {
         public static void Run()
         {
+            Console.WriteLine("This demonstrates the memory ownership model.");
+
             using (IMemoryOwner<char> owner = MemoryPool<char>.Shared.Rent())
             {
                 Console.WriteLine("Enter a number: ");

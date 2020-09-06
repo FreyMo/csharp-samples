@@ -6,6 +6,8 @@ namespace span_of_t
     {
         public static void Run()
         {
+            Console.WriteLine("This demonstrates the use of ref structs.");
+
             var myStruct = new MyStruct();
             var myRefStruct = new MyRefStruct()
             {

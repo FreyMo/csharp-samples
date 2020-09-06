@@ -6,6 +6,8 @@ namespace span_of_t
     {
         public static void Run()
         {
+            Console.WriteLine("This demonstrates slicing of arrays.");
+
             var str = "abcdefg";
             
             // abc

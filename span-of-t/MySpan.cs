@@ -54,4 +54,5 @@ namespace span_of_t
             return result;
         }
     }
+
 }
