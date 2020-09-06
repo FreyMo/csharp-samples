@@ -8,6 +8,7 @@
             MemoryAndOwnership.Run();
             StackAndHeap.Run();
             RefStructs.Run();
+            UsageOfMySpan.Run();
         }
     }
 }
