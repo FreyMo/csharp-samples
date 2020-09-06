@@ -25,9 +25,24 @@ namespace span_of_t
             get => ref _array[_start + index];
         }
 
+        public ref T this[Index index]
+        {
+            get => ref _array[_start + index.GetOffset(_length)];
+        }
+
         public MySpan<T> this[Range range]
         {
-            get => new MySpan<T>(_array[new Range(_start, _start + _length)][range]);
+            get
+            {
+                var startRelativeToArray = range.Start.GetOffset(_length);
+                var endRelativeToArray = range.End.GetOffset(_length);
+
+                return new MySpan<T>(
+                    _array,
+                    startRelativeToArray,
+                    endRelativeToArray - startRelativeToArray
+                );
+            }
         }
 
         public static implicit operator MySpan<T>(T[] array) => new MySpan<T>(array);
