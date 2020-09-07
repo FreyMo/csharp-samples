@@ -4,9 +4,9 @@ namespace split_string_with_span
 {
     public static class ReadOnlySpanOfCharExtensions
     {
-        public static StringSpanEnumerator Split(this ReadOnlySpan<char> stringSpan, char c)
+        public static StringSpanEnumerator Split(this ReadOnlySpan<char> source, char separator)
         {
-            return new StringSpanEnumerator(stringSpan, c);
+            return new StringSpanEnumerator(source, separator);
         }
     }
 }

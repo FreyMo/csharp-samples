@@ -3,59 +3,45 @@ using System.Collections;
 
 namespace split_string_with_span
 {
-    public readonly ref struct StringSpanEnumerator
+    public ref struct StringSpanEnumerator
     {
-        private readonly ReadOnlySpan<char> _stringSpan;
-        private readonly char _c;
-        private ReadOnlySpan<char> _current;
+        private readonly ReadOnlySpan<char> _source;
+        private readonly char _separator;
+        private int _start;
+        private int _end;
+        private int _current;
 
-        public StringSpanEnumerator(ReadOnlySpan<char> stringSpan, char c)
+        public StringSpanEnumerator(ReadOnlySpan<char> source, char separator)
         {
-            _stringSpan = stringSpan;
-            _c = c;
+            _source = source;
+            _separator = separator;
+            _start = 0;
+            _end = 0;
+            _current = 0;
         }
 
-        public IEnumerator<char> GetEnumerator()
-        {
-            return (IEnumerator<char>)this;
-        }
+        public StringSpanEnumerator GetEnumerator() => this;
 
-        public ReadOnlySpan<char> Current
-        {
-            get
-            {
-                if (_current == null)
-                {
-
-                }
-            }
-        }
-
+        public ReadOnlySpan<char> Current => _source[_start.._end];
+        
         public bool MoveNext()
         {
-            if (_current == null)
+            if (_current > _source.Length)
             {
-                var startIndex = 0;
-                var currentIndex = 0;
-
-                while (true)
-                {
-                    if (_stringSpan[currentIndex] == '.')
-                    {
-                        // Move next
-                        Current = _stringSpan[startIndex..currentIndex];
-                        
-                        return IsEnd();
-                    }
-
-                    currentIndex++;
-                }
+                return false;
             }
-        }
 
-        private bool IsEnd()
-        {
-            // implement me.
+            var sliced = _source.Slice(_current);
+            var index = sliced.IndexOf(_separator);
+            var length = index == -1 ? sliced.Length : index;
+
+            _start =  _current;
+            _end = _start + length;
+
+            // Length of 1 char
+            _current = _end + 1;
+
+            return true;
         }
     }
 }

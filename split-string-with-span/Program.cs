@@ -9,13 +9,19 @@ namespace split_string_with_span
             Console.WriteLine("Sample implementation of a StringSpanEnumerator that allows splitting strings without memory allocation on the heap");
             
             ReadOnlySpan<char> temp = "abc.d.ef";
+            Show(temp);
+            Show("tester".AsSpan());
+            Show(",,.,.,.,,,,,.,.");
+        }
 
-            var splitString = temp.Split('.');
+        private static void Show(ReadOnlySpan<char> source)
+        {
+            Console.WriteLine($"Original: {source.ToString()}");
+            Console.WriteLine($"Split:");
 
-            foreach (var str in splitString)
+            foreach (var slice in source.Split('.'))
             {
-                Console.WriteLine(str);
-                
+                Console.WriteLine(slice.ToString());
             }
         }
     }
