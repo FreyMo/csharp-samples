@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reactive.Linq;
-using System.Security.Cryptography;
-using System.Text;
 
 namespace event_sourcing_with_multiple_observables
 {
@@ -22,17 +20,22 @@ namespace event_sourcing_with_multiple_observables
 
             Observable.CombineLatest(_statusComponents,
                 (allLastStates) => allLastStates.Any(status => status == Status.Error))
+                .DistinctUntilChanged()
                 .Subscribe(hasState => StatusError(hasState));
             Observable.CombineLatest(_statusComponents,
                 (allLastStates) => allLastStates.All(status => status == Status.Ready))
+                .DistinctUntilChanged()
                 .Subscribe(hasState => StatusReady(hasState));
             Observable.CombineLatest(_statusComponents,
                 (allLastStates) => allLastStates.Any(status => status == Status.NotReady))
+                .DistinctUntilChanged()
                 .Subscribe(hasState => StatusNotReady(hasState));
             Observable.CombineLatest(_statusComponents,
                 (allLastStates) => allLastStates.Any(status => status == Status.Running))
+                .DistinctUntilChanged()
                 .Subscribe(hasState => StatusRunning(hasState));
 
+            
             //var lastStatus = Observable.CombineLatest(_statusComponents, (allLastStates) =>
             //    allLastStates switch
             //    {
@@ -51,8 +54,6 @@ namespace event_sourcing_with_multiple_observables
                 Console.WriteLine("StatusReady: GREEN Light ON");
             else
                 Console.WriteLine("StatusReady vanished: GREEN Light OFF");
-            
-            
         }
 
         private void StatusRunning(bool status)
@@ -61,7 +62,6 @@ namespace event_sourcing_with_multiple_observables
                 Console.WriteLine("StatusRunning: GREEN Light blinking ON");
             else
                 Console.WriteLine("StatusRunning vanished: GREEN Light blinking OFF");
-
         }
 
         private void StatusError(bool status)
