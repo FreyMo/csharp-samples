@@ -7,6 +7,13 @@ namespace multiple_observables
 {
     public class StatusObserver
     {
+        private enum LampStatus
+        {
+            On,
+            Blinking,
+            Off
+        }
+
         public StatusObserver(IEnumerable<IComponent> components)
         {
             var statusObservables = components.Select(x => x.GetStatusObservable()).ToList();
@@ -16,49 +23,59 @@ namespace multiple_observables
 
             // DistinctUntilChanged filters out observed values that are equal to their predecessors.
 
-            Observable.CombineLatest(statusObservables,
-                (lastStates) => lastStates.Any(status => status == Status.Error))
-                .DistinctUntilChanged()
-                .Subscribe(hasState => StatusError(hasState));
-                
-            Observable.CombineLatest(statusObservables,
-                (lastStates) => lastStates.All(status => status == Status.Ready))
-                .DistinctUntilChanged()
-                .Subscribe(hasState => StatusReady(hasState));
+            Observable.CombineLatest(statusObservables, 
+                (lastStates) =>
+                    lastStates switch
+                    {
+                        _ when lastStates.All(s => s == Status.Ready) => LampStatus.On,
+                        _ when lastStates.Any(s => s == Status.Running) => LampStatus.Blinking,
+                        _ => LampStatus.Off
+                    }
+                ).DistinctUntilChanged()
+                .Subscribe(lampState => GreenStatusLamp(lampState));
 
             Observable.CombineLatest(statusObservables,
-                (lastStates) => lastStates.Any(status => status == Status.NotReady))
-                .DistinctUntilChanged()
-                .Subscribe(hasState => StatusNotReady(hasState));
-
-            Observable.CombineLatest(statusObservables,
-                (lastStates) => lastStates.Any(status => status == Status.Running))
-                .DistinctUntilChanged()
-                .Subscribe(hasState => StatusRunning(hasState));
+                (lastStates) =>
+                    lastStates switch
+                    {
+                        _ when lastStates.Any(s => s == Status.Error) => LampStatus.On,
+                        _ when lastStates.Any(s => s == Status.NotReady) => LampStatus.Blinking,
+                        _ => LampStatus.Off
+                    }
+                ).DistinctUntilChanged()
+                .Subscribe(lampState => RedStatusLamp(lampState));
         }
 
-        private void StatusReady(bool status)
+        private void GreenStatusLamp(LampStatus lampStatus)
         {
-            if (status) Console.WriteLine("StatusReady: GREEN Light ON");
-            else Console.WriteLine("StatusReady vanished: GREEN Light OFF");
+            switch (lampStatus)
+            {
+                case LampStatus.On:
+                    Console.WriteLine("StatusReady: GREEN Light ON");
+                    break;
+                case LampStatus.Blinking:
+                    Console.WriteLine("StatusRunning: GREEN Light blinking ON");
+                    break;
+                case LampStatus.Off:
+                    Console.WriteLine("No status for green light active: GREEN Light OFF");
+                    break;
+            }
         }
 
-        private void StatusRunning(bool status)
+        private void RedStatusLamp(LampStatus lampStatus)
         {
-            if (status) Console.WriteLine("StatusRunning: GREEN Light blinking ON");
-            else Console.WriteLine("StatusRunning vanished: GREEN Light blinking OFF");
-        }
-
-        private void StatusError(bool status)
-        {
-            if (status) Console.WriteLine("StatusError: RED Light ON");
-            else Console.WriteLine("StatusError vanished: RED Light OFF");
-        }
-
-        private void StatusNotReady(bool status)
-        {
-            if (status) Console.WriteLine("StatusNotReady: RED Light blinking ON");
-            else Console.WriteLine("StatusNotReady vanished: RED Light blinking OFF");
+            switch (lampStatus)
+            {
+                case LampStatus.On:
+                    Console.WriteLine("StatusError: RED Light ON");
+                    break;
+                case LampStatus.Blinking:
+                    Console.WriteLine("StatusNotReady: RED Light blinking ON");
+                    break;
+                case LampStatus.Off:
+                    Console.WriteLine("No status for red light active: RED Light OFF");
+                    break;
+            }
         }
     }
 }
