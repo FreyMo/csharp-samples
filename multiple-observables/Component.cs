@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Reactive.Linq;
 using System.Reactive.Subjects;
 using System.Text;
 
@@ -14,11 +15,8 @@ namespace multiple_observables
             _currentStatus = new BehaviorSubject<Status>(initialStatus);
         }
 
-        public IObservable<Status> GetStatusObservable() => _currentStatus;
+        public IObservable<Status> GetStatusObservable() => _currentStatus.AsObservable();
 
-        public void SetStatus(Status newStatus)
-        {
-            _currentStatus.OnNext(newStatus);
-        }
+        public void SetStatus(Status newStatus) => _currentStatus.OnNext(newStatus);
     }
 }
