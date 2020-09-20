@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <RootNamespace>event_sourcing_with_multiple_observables</RootNamespace>
+    <RootNamespace>multiple_observables</RootNamespace>
   </PropertyGroup>
 	
   <ItemGroup>

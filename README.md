@@ -8,6 +8,9 @@ This repo contains usage samples for the following NuGet Packages:
 * AsyncEnumerator
   * [NuGet](https://www.nuget.org/packages/AsyncEnumerator/)
   * [Local](./async-enumerator)
+* System.Reactive
+  * [NuGet](https://www.nuget.org/packages/System.Reactive/)
+  * [Local](./multiple-observables) (ft. [TomaT3](https://github.com/TomaT3))
 
 There are also practical applications for patterns:
 
@@ -21,8 +24,15 @@ Or .NET Core Features:
 
 * [`Span<T>` and `Memory<T>`](./span-of-t)
 
+## Requirements
+
+Dependening on the project you open, you may need
+
+* .[NET Core 3.1 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1)
+* [.NET 5.0 SDK](https://dotnet.microsoft.com/download/dotnet/5.0)
+
 ## TODO
 
-* Polly
-* Reactive
-* Interactive
+* [Polly](https://www.nuget.org/packages/Polly/)
+* [Reactive](https://www.nuget.org/packages/System.Reactive/)
+* [Interactive](https://www.nuget.org/packages/System.Interactive/)

@@ -5,21 +5,20 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace event_sourcing_with_multiple_observables
+namespace multiple_observables
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-            var c1 = new ComponentWithStatus(Status.NotReady);
-            var c2 = new AnotherComponentWithStatus(Status.NotReady);
-            var c3 = new AgainAnotherComponentWithStatus(Status.NotReady);
+            Console.WriteLine("This program demonstrates a practical use case of multiple observables being orchestrated.");
+            Console.WriteLine();
 
-            var allStatusComponents = new List<IStatus> { c1, c2, c3 };
+            var c1 = new Component(Status.NotReady);
+            var c2 = new Component(Status.NotReady);
+            var c3 = new Component(Status.NotReady);
 
-
-            var statusObserver = new StatusObserver(allStatusComponents);
+            var statusObserver = new StatusObserver(new[] { c1, c2, c3 });
 
             Thread.Sleep(1000);
 
@@ -40,8 +39,6 @@ namespace event_sourcing_with_multiple_observables
             c2.SetStatus(Status.Ready);
             c1.SetStatus(Status.Ready);
             c3.SetStatus(Status.Ready);
-
-            Console.ReadKey();
         }
     }
 }
