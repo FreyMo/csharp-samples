@@ -1,5 +1,4 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30204.135
 MinimumVisualStudioVersion = 10.0.40219.1
@@ -7,17 +6,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "async-enumerator", "async-e
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "system-linq-async", "system-linq-async\system-linq-async.csproj", "{8683C6A4-783F-45D7-8DF6-E53FAE2FE917}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "getting-work-done", "getting-work-done\getting-work-done.csproj", "{44926237-CCEA-43E6-A11A-DA26CDF81D2F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "getting-work-done", "getting-work-done\getting-work-done.csproj", "{44926237-CCEA-43E6-A11A-DA26CDF81D2F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "system-reactive", "system-reactive\system-reactive.csproj", "{756F2DB6-2A78-4B0C-8175-9379D6FBCE3B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "system-reactive", "system-reactive\system-reactive.csproj", "{756F2DB6-2A78-4B0C-8175-9379D6FBCE3B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "system-interactive", "system-interactive\system-interactive.csproj", "{1C178D44-21E1-4533-84A9-6300EAD17B62}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "system-interactive", "system-interactive\system-interactive.csproj", "{1C178D44-21E1-4533-84A9-6300EAD17B62}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "event-sourcing", "event-sourcing\event-sourcing.csproj", "{280B1E29-7F39-4733-AB91-ADB31ABF0368}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "event-sourcing", "event-sourcing\event-sourcing.csproj", "{280B1E29-7F39-4733-AB91-ADB31ABF0368}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "record-types", "record-types\record-types.csproj", "{CDD7DB18-DC45-417C-A942-0CEF6C76ADCC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "record-types", "record-types\record-types.csproj", "{CDD7DB18-DC45-417C-A942-0CEF6C76ADCC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "span-of-t", "span-of-t\span-of-t.csproj", "{921DD7CF-B5B9-46A0-A80E-05872C13794B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "span-of-t", "span-of-t\span-of-t.csproj", "{921DD7CF-B5B9-46A0-A80E-05872C13794B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "multiple-observables", "multiple-observables\multiple-observables.csproj", "{D755F143-8E5C-4D9A-A845-353D64B22F58}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +58,10 @@ Global
 		{921DD7CF-B5B9-46A0-A80E-05872C13794B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{921DD7CF-B5B9-46A0-A80E-05872C13794B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{921DD7CF-B5B9-46A0-A80E-05872C13794B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D755F143-8E5C-4D9A-A845-353D64B22F58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D755F143-8E5C-4D9A-A845-353D64B22F58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D755F143-8E5C-4D9A-A845-353D64B22F58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D755F143-8E5C-4D9A-A845-353D64B22F58}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
