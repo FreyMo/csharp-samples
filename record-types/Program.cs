@@ -6,6 +6,12 @@ namespace record_types
     {
         static void Main(string[] args)
         {
+            SerializationSample.Run();
+            Demonstrate();
+        }
+
+        private static void Demonstrate()
+        {
             var rec = new MyRecord
             {
                 MyInt = 3,
