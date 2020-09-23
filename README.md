@@ -11,6 +11,9 @@ This repo contains usage samples for the following NuGet Packages:
 * System.Reactive
   * [NuGet](https://www.nuget.org/packages/System.Reactive/)
   * [Local](./multiple-observables) (ft. [TomaT3](https://github.com/TomaT3))
+* BenchmarkDotNet
+  * [NuGet](https://www.nuget.org/packages/BenchmarkDotNet/)
+  * [Local](./benchmarks)
 
 There are also practical applications for patterns:
 
