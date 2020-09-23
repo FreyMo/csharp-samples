@@ -7,13 +7,6 @@ namespace multiple_observables
 {
     public class StatusObserver
     {
-        private enum LampStatus
-        {
-            On,
-            Blinking,
-            Off
-        }
-
         public StatusObserver(IEnumerable<IComponent> components)
         {
             var statusObservables = components.Select(x => x.GetStatusObservable()).ToList();
@@ -23,7 +16,7 @@ namespace multiple_observables
 
             // DistinctUntilChanged filters out observed values that are equal to their predecessors.
 
-            Observable.CombineLatest(statusObservables, 
+            statusObservables.CombineLatest(
                 (lastStates) =>
                     lastStates switch
                     {
@@ -34,7 +27,7 @@ namespace multiple_observables
                 ).DistinctUntilChanged()
                 .Subscribe(lampState => GreenStatusLamp(lampState));
 
-            Observable.CombineLatest(statusObservables,
+            statusObservables.CombineLatest(
                 (lastStates) =>
                     lastStates switch
                     {
