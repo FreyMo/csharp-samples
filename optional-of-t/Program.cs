@@ -1,7 +1,6 @@
 ﻿using Optional;
 using System;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace optional_of_t
 {
