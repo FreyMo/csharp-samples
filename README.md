@@ -14,6 +14,9 @@ This repo contains usage samples for the following NuGet Packages:
 * BenchmarkDotNet
   * [NuGet](https://www.nuget.org/packages/BenchmarkDotNet/)
   * [Local](./benchmarks)
+* Optional
+  * [NuGet](https://www.nuget.org/packages/Optional/)
+  * [Local](./optional-of-t)
 
 There are also practical applications for patterns:
 
@@ -37,5 +40,4 @@ Dependening on the project you open, you may need
 ## TODO
 
 * [Polly](https://www.nuget.org/packages/Polly/)
-* [Reactive](https://www.nuget.org/packages/System.Reactive/)
 * [Interactive](https://www.nuget.org/packages/System.Interactive/)
