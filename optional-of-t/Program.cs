@@ -8,6 +8,8 @@ namespace optional_of_t
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("This program showcases multiple usages of the Optional<T> type for a more functional programming style");
+            
             var api = new ItemApi(new());
             
             api.GetItem(99).Match(

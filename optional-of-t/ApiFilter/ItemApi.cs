@@ -20,8 +20,8 @@ namespace optional_of_t
         {
             var filters = new IItemFilter[]
             {
-                new ValueFilter(minimum.AsOption()),
-                new DateFilter(createdAt.AsOption()),
+                new ValueFilter(minimum.ToOption()),
+                new DateFilter(createdAt.ToOption()),
             };
 
             return repo.GetItems(filters);

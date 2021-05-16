@@ -14,7 +14,7 @@ namespace optional_of_t
             new(999, 5000, DateTime.MinValue)
         };
 
-        public Option<Item> GetItem(long id) => items.FirstOrDefault(i => i.Id == id).AsOption();
+        public Option<Item> GetItem(long id) => items.FirstOrDefault(i => i.Id == id).ToOption();
 
         public IEnumerable<Item> GetItems(IItemFilter[] filters)
         {
